@@ -9,7 +9,6 @@ public class QuestionManager {
 	/**
 	 * This method validates the question, if it is a valid question then it will be
 	 * added to questionList.
-	 * 
 	 * @param question
 	 * @return
 	 */
@@ -24,7 +23,6 @@ public class QuestionManager {
 
 	/**
 	 * This method returns list of questions.
-	 * 
 	 * @return
 	 */
 	public static ArrayList<Question> getAllQuestion() {
@@ -56,7 +54,6 @@ public class QuestionManager {
 	/**
 	 * This method validates the given description. Description should not be null,
 	 * empty, and also the length of the description should not be > 600
-	 * 
 	 * @param questionObject
 	 * @return
 	 */
@@ -78,12 +75,11 @@ public class QuestionManager {
 
 	/**
 	 * This method returns the length of the given string.
-	 * 
 	 * @param string
 	 * @return
 	 */
 	public static int getLength(String string) {
-		return string.length();
+		return string.trim().length();
 	}
 
 }
