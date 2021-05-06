@@ -1,10 +1,10 @@
-package in.ramkumar;
+package in.ramkumar.question;
 
 import java.util.ArrayList;
 
 public class QuestionManager {
 
-	static ArrayList<Question> questionList = new ArrayList<Question>();
+	private static ArrayList<Question> questionList = new ArrayList<Question>();
 
 	/**
 	 * This method validates the question, if it is a valid question then it will be

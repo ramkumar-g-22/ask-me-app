@@ -1,18 +1,22 @@
-package in.ramkumar;
+package in.ramkumar.question;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class TestQuestionManager {
+import in.ramkumar.util.ValidationUtil;
+
+public class TestAddQuestionManager {
 
 	private String validQuestion = "What is Java?";
 	private String validDescription = "Help me to answer for this to talk about it in interview";
+	
 	private String questionWithGreaterThan300Letters = "What is meant by Java? Why we use getters and setters? "
 			+ "What is meant by inheritance? What is method overriding? What is method overloading? "
 			+ "What is the use of default keyword in Java? What is meant by polymorphism? Why we "
 			+ "static keyword? What is meant by Java? Why we use getters and setters? Usage of polymorphism";
+	
 	private String descriptionWithGreaterThan600Letters = "What is meant by Java? Why we use getters and setters? "
 			+ "What is meant by inheritance? What is method overriding? What is method overloading? "
 			+ "What is the use of default keyword in Java? What is meant by polymorphism? Why we "
@@ -84,7 +88,7 @@ public class TestQuestionManager {
 	}
 	
 	/**
-	 * Validation of question with >300 letters and description with >600
+	 * Validation of question with >300 letters and description with >600 letters
 	 */
 	@Test
 	public void testAddQuestionWithGreaterThan300And600Letters() {

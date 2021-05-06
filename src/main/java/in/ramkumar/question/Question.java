@@ -1,4 +1,4 @@
-package in.ramkumar;
+package in.ramkumar.question;
 
 public class Question {
 	
@@ -15,6 +15,7 @@ public class Question {
 	
 	/**
 	 * This method sets the question for the current Question object.
+	 * @param question
 	 * @return
 	 */
 	public void setQuestion(String question) {
@@ -31,16 +32,19 @@ public class Question {
 	
 	/**
 	 * This method sets the description for the current Question object.
+	 * @param description
 	 * @return
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 	
+	/**
+	 * @return Returns the string representation of Question object.
+	 */
 	@Override
 	public String toString() {
 		return "Question [question=" + question + ", description=" + description + "]";
 	}
-
 	
 }
