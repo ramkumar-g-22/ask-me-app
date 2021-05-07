@@ -18,3 +18,5 @@ Ask your questions and share your knowledge.
  * The email and password should not be null, empty.
  * The email and password is verified with registered users.
  
+#### Feature 4: Remove user by Admin.
+ * UserManagerTeam can remove the user from the user list.
