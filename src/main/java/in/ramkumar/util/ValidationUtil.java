@@ -18,7 +18,7 @@ public class ValidationUtil {
 		try {
 			int nameLength = getLength(name);
 			int numberOfCharactersForName = 20;
-			if (name != null && name.trim() != "" && nameLength <= numberOfCharactersForName) {
+			if (checkingForNullAndEmpty(name) && nameLength <= numberOfCharactersForName) {
 				validName = true;
 			}
 		} catch (Exception e) {
@@ -39,7 +39,7 @@ public class ValidationUtil {
 		try {
 			String passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,}$";
 			boolean validPasswordPattern = Pattern.matches(passwordPattern, password);
-			if (password != null && password.trim() != "" && validPasswordPattern) {
+			if (checkingForNullAndEmpty(password) && validPasswordPattern) {
 				validPassword = true;
 			}
 		} catch (Exception e) {
@@ -60,7 +60,7 @@ public class ValidationUtil {
 		boolean validPassword = false;
 		try {
 			boolean validEmailPattern = Pattern.matches(emailPattern, email);
-			if (email != null && email.trim() != "" && validEmailPattern) {
+			if (checkingForNullAndEmpty(email) && validEmailPattern) {
 				validPassword = true;
 			}
 		} catch (Exception e) {
@@ -68,4 +68,5 @@ public class ValidationUtil {
 		}
 		return validPassword;
 	}
+
 }

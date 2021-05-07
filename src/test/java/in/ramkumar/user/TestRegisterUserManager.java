@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import in.ramkumar.admin.user_manager_team.UserManagerTeam;
+import in.ramkumar.admin.user_manager_team.UserManagerTeamManager;
+
 public class TestRegisterUserManager {
 
 	/**
@@ -13,42 +16,40 @@ public class TestRegisterUserManager {
 	public void testRegisterUserWithValidInputs() {
 		User user = new User();
 		user.setName("Ramkumar G");
-		user.setEmail("ramkumar.g.0420@gmail.com");
+		user.setEmail("ramkumar.g.04@gmail.com");
 		user.setPassword("Pass@123");
 		boolean validUser = UserManager.registerUser(user);
-		assertTrue(validUser);		
+		assertTrue(validUser);
 	}
-	
+
 	/**
 	 * Testing with already existing user(same email).
 	 */
 	@Test
 	public void testRegisterUserWithAlreadyExistingUser() {
-		System.out.println("Users : " + UserManager.getNumberOfUsers());
 		User user1 = new User();
 		user1.setName("Ramkumar G");
 		user1.setEmail("ramkumar.g.0420@gmail.com");
 		user1.setPassword("Pass@123");
 		boolean validUser1 = UserManager.registerUser(user1);
-		
+
 		User user2 = new User();
 		user2.setName("Ram G");
 		user2.setEmail("ramkumar.g.0420@gmail.com");
 		user2.setPassword("Pass@123456");
 		boolean validUser2 = UserManager.registerUser(user2);
-		
-				
+
 		/*
-		 * User1 has to be added to userList, because no user exists in the userList.
-		 * So we are expecting true as output.
+		 * User1 has to be added to userList, because no user exists in the userList. So
+		 * we are expecting true as output.
 		 */
 		assertTrue(validUser1);
-		
+
 		/*
-		 * User2(Same user) should not be added to the userList, because user exists in the userList.
-		 * So we are expecting false as output.
+		 * User2(Same user) should not be added to the userList, because user exists in
+		 * the userList. So we are expecting false as output.
 		 */
-		assertFalse(validUser2);	
+		assertFalse(validUser2);
 	}
 
 	/**
@@ -61,9 +62,9 @@ public class TestRegisterUserManager {
 		user.setEmail("ramkumar.g.0420@psr.edu.in");
 		user.setPassword("Pass@123");
 		boolean validUser = UserManager.registerUser(user);
-		assertFalse(validUser);		
+		assertFalse(validUser);
 	}
-	
+
 	/**
 	 * Testing with null name and valid email and password.
 	 */
@@ -74,7 +75,7 @@ public class TestRegisterUserManager {
 		user.setEmail("ramkumar.g.0420@gmail.com");
 		user.setPassword("Pass@123");
 		boolean validUser = UserManager.registerUser(user);
-		assertFalse(validUser);		
+		assertFalse(validUser);
 	}
 
 	/**
@@ -87,9 +88,9 @@ public class TestRegisterUserManager {
 		user.setEmail("ramkumar.g.0420gmail.com");
 		user.setPassword("Pass@123");
 		boolean validUser = UserManager.registerUser(user);
-		assertFalse(validUser);		
+		assertFalse(validUser);
 	}
-		
+
 	/**
 	 * Testing with invalid email(without .) and valid name and password.
 	 */
@@ -100,11 +101,12 @@ public class TestRegisterUserManager {
 		user.setEmail("ramkumar0420gmailcom");
 		user.setPassword("Pass@123");
 		boolean validUser = UserManager.registerUser(user);
-		assertFalse(validUser);		
+		assertFalse(validUser);
 	}
-	
+
 	/**
-	 * Testing with invalid email(with special characters) and valid name and password.
+	 * Testing with invalid email(with special characters) and valid name and
+	 * password.
 	 */
 	@Test
 	public void testRegisterUserWithInvalidSpecialCharacterInEmail() {
@@ -113,9 +115,9 @@ public class TestRegisterUserManager {
 		user.setEmail("ram kumar#0420@gmail.com");
 		user.setPassword("Pass@123");
 		boolean validUser = UserManager.registerUser(user);
-		assertFalse(validUser);		
+		assertFalse(validUser);
 	}
-	
+
 	/**
 	 * Testing with null email and valid name and password.
 	 */
@@ -126,9 +128,9 @@ public class TestRegisterUserManager {
 		user.setEmail(null);
 		user.setPassword("Pass@123");
 		boolean validUser = UserManager.registerUser(user);
-		assertFalse(validUser);		
+		assertFalse(validUser);
 	}
-	
+
 	/**
 	 * Testing with empty email and valid name and password.
 	 */
@@ -139,12 +141,12 @@ public class TestRegisterUserManager {
 		user.setEmail("");
 		user.setPassword("Pass@123");
 		boolean validUser = UserManager.registerUser(user);
-		assertFalse(validUser);		
+		assertFalse(validUser);
 	}
 
-
 	/**
-	 * Testing with invalid password(without special characters) and valid name and email.
+	 * Testing with invalid password(without special characters) and valid name and
+	 * email.
 	 */
 	@Test
 	public void testRegiterUserWithoutSpecialCharacterInPassword() {
@@ -153,9 +155,9 @@ public class TestRegisterUserManager {
 		user.setEmail("ramkumar.g.0420@gmail.com");
 		user.setPassword("Pass1234");
 		boolean validUser = UserManager.registerUser(user);
-		assertFalse(validUser);		
+		assertFalse(validUser);
 	}
-	
+
 	/**
 	 * Testing with invalid password(without numbers) and valid name and email.
 	 */
@@ -166,11 +168,12 @@ public class TestRegisterUserManager {
 		user.setEmail("ramkumar.g.0420@gmail.com");
 		user.setPassword("Pass#one");
 		boolean validUser = UserManager.registerUser(user);
-		assertFalse(validUser);		
+		assertFalse(validUser);
 	}
-	
+
 	/**
-	 * Testing with invalid password(without upper case letters) and valid name and email.
+	 * Testing with invalid password(without upper case letters) and valid name and
+	 * email.
 	 */
 	@Test
 	public void testRegiterUserWithoutUpperCaseInPassword() {
@@ -179,9 +182,9 @@ public class TestRegisterUserManager {
 		user.setEmail("ramkumar.g.0420@gmail.com");
 		user.setPassword("pass&123");
 		boolean validUser = UserManager.registerUser(user);
-		assertFalse(validUser);		
+		assertFalse(validUser);
 	}
-	
+
 	/**
 	 * Testing with invalid password(with <8 characters) and valid name and email.
 	 */
@@ -192,9 +195,9 @@ public class TestRegisterUserManager {
 		user.setEmail("ramkumar.g.0420@gmail.com");
 		user.setPassword("pass&12");
 		boolean validUser = UserManager.registerUser(user);
-		assertFalse(validUser);		
+		assertFalse(validUser);
 	}
-	
+
 	/**
 	 * Testing with null password and valid name and email.
 	 */
@@ -205,9 +208,9 @@ public class TestRegisterUserManager {
 		user.setEmail("ramkumar.g.0420@gmail.com");
 		user.setPassword(null);
 		boolean validUser = UserManager.registerUser(user);
-		assertFalse(validUser);		
+		assertFalse(validUser);
 	}
-	
+
 	/**
 	 * Testing with empty password and valid email and name.
 	 */
@@ -218,7 +221,7 @@ public class TestRegisterUserManager {
 		user.setEmail("ramkumar.g.0420@psr.edu.in");
 		user.setPassword("");
 		boolean validUser = UserManager.registerUser(user);
-		assertFalse(validUser);		
+		assertFalse(validUser);
 	}
 
 }
