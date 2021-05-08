@@ -4,11 +4,13 @@ import static in.ramkumar.util.StringUtil.*;
 
 import java.util.regex.Pattern;
 
+import in.ramkumar.question.Question;
+
 public class ValidationUtil {
 
 	/**
-	 * This method validates the given name. The name should not be null, empty, and
-	 * also name length <=20 characters.
+	 * UserName Validation. This method validates the given name. The name should
+	 * not be null, empty, and also name length <=20 characters.
 	 * 
 	 * @param name
 	 * @return Returns true iff meets the above condition.
@@ -28,8 +30,8 @@ public class ValidationUtil {
 	}
 
 	/**
-	 * This method validates the given password. The password should not be null,
-	 * empty, and also password length >=8 characters.
+	 * Password Validation. This method validates the given password. The password
+	 * should not be null, empty, and also password length >=8 characters.
 	 * 
 	 * @param password
 	 * @return Returns true iff meets the above condition.
@@ -49,8 +51,8 @@ public class ValidationUtil {
 	}
 
 	/**
-	 * This method validates the given email. Condition: The email should not be
-	 * null, empty, and also it should meet the email pattern.
+	 * Email Validation. This method validates the given email. Condition: The email
+	 * should not be null, empty, and also it should meet the email pattern.
 	 * 
 	 * @param email
 	 * @return Returns true iff meets the above condition.
@@ -67,6 +69,52 @@ public class ValidationUtil {
 			validPassword = false;
 		}
 		return validPassword;
+	}
+
+	/**
+	 * Question Validation. This method validates the given question. Question
+	 * should not be null, empty, and also the length of the question should not be
+	 * > 300
+	 * 
+	 * @param questionObject
+	 * @return Returns true iff it is a valid question.
+	 */
+	public static boolean validateQuestion(Question questionObject) {
+		String question = questionObject.getQuestion();
+		boolean validQuestion = false;
+		Integer numberOfCharactersForQuestion = 300;
+		try {
+			int questionLength = getLength(question);
+			if (checkingForNullAndEmpty(question) && questionLength <= numberOfCharactersForQuestion) {
+				validQuestion = true;
+			}
+		} catch (Exception e) {
+			validQuestion = false;
+		}
+		return validQuestion;
+	}
+
+	/**
+	 * Description Validation. This method validates the given description.
+	 * Description should not be null, empty, and also the length of the description
+	 * should not be > 600
+	 * 
+	 * @param questionObject
+	 * @return Returns true iff it is a valid description.
+	 */
+	public static boolean validateDescription(Question questionObject) {
+		boolean validDescription = false;
+		String description = questionObject.getDescription();
+		Integer numberOfCharactersForDescription = 600;
+		try {
+			int descriptionLength = getLength(description);
+			if (checkingForNullAndEmpty(description) && descriptionLength <= numberOfCharactersForDescription) {
+				validDescription = true;
+			}
+		} catch (Exception e) {
+			validDescription = false;
+		}
+		return validDescription;
 	}
 
 }
