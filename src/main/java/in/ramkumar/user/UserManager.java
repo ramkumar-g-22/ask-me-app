@@ -2,6 +2,8 @@ package in.ramkumar.user;
 
 import java.util.ArrayList;
 
+import in.ramkumar.util.ValidationUtil;
+
 import static in.ramkumar.util.ValidationUtil.*;
 import static in.ramkumar.util.StringUtil.*;
 
@@ -10,6 +12,7 @@ public class UserManager {
 	private static ArrayList<User> userList = new ArrayList<User>();
 
 	/**
+	 * User Registration.
 	 * This validates the user name, password, email given by the user. If it is a
 	 * valid user then it will be added to the userList.
 	 * 
@@ -18,10 +21,9 @@ public class UserManager {
 	 */
 	public static boolean registerUser(User userObject) {
 		String name = userObject.getName();
-		String email = userObject.getEmail();
+		String email = userObject.getEmail().toLowerCase();
 		String password = userObject.getPassword();
 		boolean validUser = false;
-		
 
 		boolean validName = validateName(name);
 		boolean validPassword = validatePassword(password);
@@ -75,6 +77,7 @@ public class UserManager {
 	}
 
 	/**
+	 * User Login.
 	 * This method checks the user exist in the userList. If the user exist, user
 	 * object index will be return by getUserIndexWithEmail(email). With user index
 	 * we can get the user object reference. And then email and password is
@@ -102,7 +105,84 @@ public class UserManager {
 				}
 			}
 		}
+		return validUser;
+	}
 
+	/**
+	 * Update UserName.
+	 * This method validates the given new user name. If it is a valid user name
+	 * then only it will change their new user name.
+	 * 
+	 * @param email
+	 * @param newUserName
+	 * @return Returns true iff the user name is successfully changed to new user
+	 *         name.
+	 */
+	public static boolean changeUserName(String email, String newUserName) {
+		boolean validUser = false;
+		boolean validUserName = ValidationUtil.validateName(newUserName);
+		int userIndex = -1;
+		if (validUserName) {
+			userIndex = getUserIndexWithEmail(email);
+		}
+		if (userIndex != -1) {
+			User user = userList.get(userIndex);
+			user.setName(newUserName);
+			userList.set(userIndex, user);
+			validUser = true;
+		}
+		return validUser;
+	}
+
+	/**
+	 * Update Password.
+	 * This method validates the given new user password. If it is a valid password
+	 * then only it will update their new password.
+	 * 
+	 * @param email
+	 * @param newPassword
+	 * @return Returns true iff the user password is successfully changed to new
+	 *         password.
+	 */
+	public static boolean changePassword(String email, String newPassword) {
+		boolean validUser = false;
+		boolean validPassword = ValidationUtil.validatePassword(newPassword);
+		int userIndex = -1;
+		if (validPassword) {
+			userIndex = getUserIndexWithEmail(email);
+		}
+		if (userIndex != -1) {
+			User user = userList.get(userIndex);
+			user.setPassword(newPassword);
+			userList.set(userIndex, user);
+			validUser = true;
+		}
+		return validUser;
+	}
+
+	/**
+	 * Update Email.
+	 * This method validates the given new user email. If it is a valid email then
+	 * only it will update their new email.
+	 * 
+	 * @param email
+	 * @param newEmail
+	 * @return Returns true iff the user newEmail is successfully changed to new
+	 *         email.
+	 */
+	public static boolean changeEmail(String email, String newEmail) {
+		boolean validUser = false;
+		boolean validEmail = ValidationUtil.validateEmail(newEmail);
+		int userIndex = -1;
+		if (validEmail) {
+			userIndex = getUserIndexWithEmail(email);
+		}
+		if (userIndex != -1) {
+			User user = userList.get(userIndex);
+			user.setEmail(newEmail.toLowerCase());
+			userList.set(userIndex, user);
+			validUser = true;
+		}
 		return validUser;
 	}
 

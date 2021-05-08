@@ -20,3 +20,7 @@ Ask your questions and share your knowledge.
  
 #### Feature 4: Remove user by Admin.
  * UserManagerTeam can remove the user from the user list.
+ 
+#### Feature 5: Update user profile.
+ * User can update their name, password, email.
+ * It will be validated before updation.

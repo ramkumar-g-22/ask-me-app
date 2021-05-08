@@ -1,4 +1,4 @@
-package in.admin;
+package in.ramkumar.admin;
 
 import static org.junit.Assert.*;
 
